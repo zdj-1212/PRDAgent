@@ -1,0 +1,18 @@
+[project]
+name = "prdagent"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.141.1",
+    "langgraph>=1.2.11",
+    "milvus-lite>=3.2.1",
+    "openai>=3.6.0",
+    "pydantic-settings>=2.15.0",
+    "pymilvus>=3.0.1",
+    "python-dotenv>=1.2.3",
+    "uvicorn>=0.52.4",
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true

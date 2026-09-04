@@ -1,0 +1,40 @@
+### 健康检查
+GET http://127.0.0.1:8000/api/health
+Accept: application/json
+
+###
+
+### 自动模式：一键生成完整 PRD
+POST http://127.0.0.1:8000/api/prd/generate
+Content-Type: application/json
+
+{
+  "raw_input": "做一个内部报销系统，目标是员工线上提交报销、财务审核，减少纸质单据；必须对接企业微信",
+  "mode": "auto",
+  "constraints": ["工期2个月", "预算有限"]
+}
+
+###
+
+### 交互模式：信息不足 -> 返回反问问题
+POST http://127.0.0.1:8000/api/prd/generate
+Content-Type: application/json
+
+{
+  "raw_input": "做一个报销系统",
+  "mode": "interactive"
+}
+
+###
+
+### 交互模式续跑：用上一步返回的 thread_id 和 answers 继续
+POST http://127.0.0.1:8000/api/prd/resume
+Content-Type: application/json
+
+{
+  "thread_id": "这里填 generate 返回的 thread_id",
+  "answers": {
+    "business_goal": "员工线上提交报销并完成财务审核",
+    "user_roles": "普通员工,财务审核员,管理员"
+  }
+}
